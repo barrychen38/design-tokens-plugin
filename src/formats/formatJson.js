@@ -1,5 +1,5 @@
 import { tokensPage } from "../settings";
-import getColorFills from "../getSketchData/getColorFills";
+import getColorFills, { category } from "../getSketchData/getColorFills";
 import getTypography from "../getSketchData/getTypographyFonts";
 import getSvgPaths from "../getSketchData/getSvgPaths";
 import getUtils from "../getSketchData/getUtils";
@@ -35,7 +35,7 @@ export const color = () => {
   }
 
   const rawData = fromPairs(Object.entries(jsonData.color));
-  const colorData = JSON.stringify({ color: rawData }, null, 4);
+  const colorData = JSON.stringify({ props: rawData, global: { category } }, null, 4);
   return colorData;
 };
 
