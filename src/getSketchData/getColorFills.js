@@ -3,7 +3,7 @@ import { tokensPage, colorGroupName, colorLayerName } from "../settings";
 const sketchDomSelected = require("sketch/dom").getSelectedDocument();
 const [tokenPage] = sketchDomSelected.pages.filter(page => page.name.includes(tokensPage));
 
-let [ getColorFills, category ] = [ null, null ];
+let [ getColorFills ] = [ null ];
 
 function hexToRGB(hex) {
   var r = parseInt(hex.slice(1, 3), 16),
@@ -17,7 +17,6 @@ function hexToRGB(hex) {
 if (tokenPage) {
   const [{ layers }] = tokenPage.layers;
   const colorGroups = layers.filter(layer => layer.name.includes(colorGroupName));
-  category = colorGroups[0].name
   const groupLayers = map(colorGroups, "layers")
     .flat()
     .filter(item => item.name.includes(colorLayerName));
@@ -35,4 +34,3 @@ if (tokenPage) {
   });
 }
 export default getColorFills;
-export { category };

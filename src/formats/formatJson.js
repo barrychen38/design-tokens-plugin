@@ -1,7 +1,7 @@
 import { tokensPage } from "../settings";
-import getColorFills, { category } from "../getSketchData/getColorFills";
+import getColorFills from "../getSketchData/getColorFills";
 import getTypography from "../getSketchData/getTypographyFonts";
-import getSvgPaths from "../getSketchData/getSvgPaths";
+// import getSvgPaths from "../getSketchData/getSvgPaths";
 import getUtils from "../getSketchData/getUtils";
 
 const sketchDomSelected = require("sketch/dom").getSelectedDocument();
@@ -22,9 +22,10 @@ export const color = () => {
       array.reduce(
         (obj, item) => ({
           ...obj,
-          [item.name]: {
-            hex: item.color.slice(0, -2),
-            rgba: item.rgba,
+          [`color-${item.name}`]: {
+            // hex: item.color.slice(0, -2),
+            value: item.color.slice(0, -2),
+            // rgba: item.rgba,
             type: "color"
           }
         }),
@@ -35,7 +36,7 @@ export const color = () => {
   }
 
   const rawData = fromPairs(Object.entries(jsonData.color));
-  const colorData = JSON.stringify({ props: rawData, global: { category } }, null, 4);
+  const colorData = JSON.stringify({ props: rawData, global: { category: 'colors' } }, null, 4);
   return colorData;
 };
 
@@ -46,12 +47,13 @@ export const typography = () => {
         (obj, item) => ({
           ...obj,
           [item.name]: {
-            "font-family": { value: item.fontFamily },
-            "font-size": { value: item.fontSize },
-            weight: { value: item.fontWeight },
-            "letter-spacing": { value: item.letterSpacing },
-            "line-height": { value: item.lineHeight },
-            type: item.tokenType
+            value: [ item.fontSize, item.lineHeight ],
+            // "font-family": { value: item.fontFamily },
+            // "font-size": { value: item.fontSize },
+            // weight: { value: item.fontWeight },
+            // "letter-spacing": { value: item.letterSpacing },
+            // "line-height": { value: item.lineHeight },
+            type: 'font',
           }
         }),
         {}
@@ -59,32 +61,31 @@ export const typography = () => {
     // Gives the name of the category
     jsonData.typography = arrayToObject(getTypography);
     const rawData = fromPairs(Object.entries(jsonData.typography));
-    console.log(getTypography);
-    const typographyData = JSON.stringify({ typography: rawData }, null, 4);
+    const typographyData = JSON.stringify({ props: rawData, global: { category: 'typography' } }, null, 4);
     return typographyData;
   }
 };
 
-export const icons = () => {
-  if (tokenPage) {
-    const arrayToObject = array =>
-      array.reduce(
-        (obj, item) => ({
-          ...obj,
-          [item.name]: {
-            value: item.svgCodeSting,
-            type: "icon"
-          }
-        }),
-        {}
-      );
-    // Gives the name of the category
-    jsonData.svg = arrayToObject(getSvgPaths);
-    const rawData = fromPairs(Object.entries(jsonData.svg));
-    const iconsData = JSON.stringify({ icon: rawData }, null, 4);
-    return iconsData;
-  }
-};
+// export const icons = () => {
+//   if (tokenPage) {
+//     const arrayToObject = array =>
+//       array.reduce(
+//         (obj, item) => ({
+//           ...obj,
+//           [item.name]: {
+//             value: item.svgCodeSting,
+//             type: "icon"
+//           }
+//         }),
+//         {}
+//       );
+//     // Gives the name of the category
+//     jsonData.svg = arrayToObject(getSvgPaths);
+//     const rawData = fromPairs(Object.entries(jsonData.svg));
+//     const iconsData = JSON.stringify({ icon: rawData }, null, 4);
+//     return iconsData;
+//   }
+// };
 
 export const utils = () => {
   const arrayToObject = array =>
