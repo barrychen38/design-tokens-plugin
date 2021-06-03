@@ -1,5 +1,5 @@
 import { map, concat } from "lodash";
-import { tokensPage, utilisGroupName, utilisLayerName, utilisAll } from "../settings";
+import { tokensPage, utilsGroupName, utilsLayerName, utilsAll } from "../settings";
 
 const sketchDomSelected = require("sketch/dom").getSelectedDocument();
 const [tokenPage] = sketchDomSelected.pages.filter(page => page.name.includes(tokensPage));
@@ -11,13 +11,13 @@ let getUtilsBorder;
 
 if (tokenPage) {
   const [{ layers }] = tokenPage.layers;
-  const utilisGroups = layers.filter(layer => layer.name.includes(utilisGroupName));
+  const utilsGroups = layers.filter(layer => layer.name.includes(utilsGroupName));
 
-  const groupLayers = map(utilisGroups, "layers")
+  const groupLayers = map(utilsGroups, "layers")
     .flat()
-    .filter(item => item.name.includes(utilisLayerName));
+    .filter(item => item.name.includes(utilsLayerName));
 
-  const spacerToken = groupLayers.filter(item => item.name.includes(utilisAll[0]));
+  const spacerToken = groupLayers.filter(item => item.name.includes(utilsAll[0]));
   getUtilsSpace = map(spacerToken, value => {
     return {
       name: value.name.split("/")[1] + "-" + value.name.split("/")[2],
@@ -25,7 +25,7 @@ if (tokenPage) {
     };
   });
 
-  const radiusToken = groupLayers.filter(item => item.name.includes(utilisAll[1]));
+  const radiusToken = groupLayers.filter(item => item.name.includes(utilsAll[1]));
   getUtilsRadius = map(radiusToken, value => {
     return {
       name: value.name.split("/")[1] + "-" + value.name.split("/")[2],
@@ -35,7 +35,7 @@ if (tokenPage) {
     };
   });
 
-  const shadowToken = groupLayers.filter(item => item.name.includes(utilisAll[2]));
+  const shadowToken = groupLayers.filter(item => item.name.includes(utilsAll[2]));
   getUtilsShadow = shadowToken.map(({ name, sharedStyleId }) => {
     return {
       name: name.split("/")[1] + "-" + name.split("/")[2],
@@ -43,7 +43,7 @@ if (tokenPage) {
     };
   });
 
-  const borderToken = groupLayers.filter(item => item.name.includes(utilisAll[3]));
+  const borderToken = groupLayers.filter(item => item.name.includes(utilsAll[3]));
   getUtilsBorder = borderToken.map(({ name, sharedStyleId }) => {
     return{
       name: name.split("/")[1] + "-" + name.split("/")[2],
@@ -52,6 +52,6 @@ if (tokenPage) {
   });
 }
 
-const getUtilis = concat(getUtilsSpace, getUtilsRadius, getUtilsShadow, getUtilsBorder);
+const getUtils = concat(getUtilsSpace, getUtilsRadius, getUtilsShadow, getUtilsBorder);
 
-export default getUtilis;
+export default getUtils;

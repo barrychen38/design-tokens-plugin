@@ -87,35 +87,60 @@ export const typography = () => {
 //   }
 // };
 
+const getV = (v) => {
+  if (v !== undefined && v !== null) {
+    return v
+  }
+  return undefined
+}
 export const utils = () => {
   const arrayToObject = array =>
     array.reduce(
-      (obj, item) => ({
-        ...obj,
-        [item.name]: {
-          spacer: item.height ? item.height : undefined,
-          radius: item.radius ? item.radius : undefined,
-          shadows: item.shadowItem ? [item.shadowItem] : undefined,
-          border: item.border ? [item.border] : undefined,
-          /*
-                    "shadow": (item.shadow ? {
-                        color: (item.shadowColor ? item.shadowColor : undefined),
-                        x: (item.shadowX ? item.shadowX : undefined),
-                        y: (item.shadowY ? item.shadowY : undefined),
-                        blur: (item.shadowBlur ? item.shadowBlur : undefined),
-                        spread: (item.shadowSpread ? item.shadowSpread : undefined),
-                    }: undefined),
-                    */
-
-          type: "utils"
+      (obj, item) => {
+        const space = getV(item.height)
+        const radius = getV(item.radius)
+        const shadow = getV(item.shadowItem)
+        const border = getV(item.border)
+        const prop = {
+          [item.name]: {
+            value: space || radius || shadow || border || undefined,
+            // space: item.height ? item.height : undefined,
+            // radius: item.radius ? item.radius[0] : undefined,
+            // shadows: item.shadowItem ? [item.shadowItem] : undefined,
+            // border: item.border ? [item.border] : undefined,
+            /*
+                      "shadow": (item.shadow ? {
+                          color: (item.shadowColor ? item.shadowColor : undefined),
+                          x: (item.shadowX ? item.shadowX : undefined),
+                          y: (item.shadowY ? item.shadowY : undefined),
+                          blur: (item.shadowBlur ? item.shadowBlur : undefined),
+                          spread: (item.shadowSpread ? item.shadowSpread : undefined),
+                      }: undefined),
+                      */
+          },
         }
-      }),
+        let type = null
+        if (space) {
+          type = 'space'
+        }
+        if (radius) {
+          type = 'radius'
+        }
+        if (border) {
+          type = 'border'
+        }
+        if (shadow) {
+          type = 'shadow'
+        }
+        prop[item.name].type = type
+        return { ...obj, ...prop }
+      },
       {}
     );
   // Gives the name of the category
 
   jsonData.utils = arrayToObject(getUtils);
   const rawData = fromPairs(Object.entries(jsonData.utils));
-  const utilsData = JSON.stringify({ utils: rawData }, null, 4);
+  const utilsData = JSON.stringify({ props: rawData, global: { category: 'utils' } }, null, 4);
   return utilsData;
 };

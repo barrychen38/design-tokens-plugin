@@ -2,11 +2,11 @@
 
 # Design Tokens
 
-Delivering consistent Design System. A Sketch plugin that exports Design Tokens to JSON format. You can export colors, typography, icons and utilis.
+Delivering consistent Design System. A Sketch plugin that exports Design Tokens to JSON format. You can export colors, typography, icons and utils.
 A must-have tool for design system project.
 
 
-## Features 
+## Features
 
 1. Design tokens in single source of truth file as Sketch library
 2. Color tokens as JSON object
@@ -17,18 +17,18 @@ A must-have tool for design system project.
 ### 1. Design tokens in single source of truth file as Sketch library
 
 Use example `design-tokens.sketch` file in `example-file` folder. You can fill in the content you want
-in the example file. Make sure that you use layer style and text styles when you create tokens. 
+in the example file. Make sure that you use layer style and text styles when you create tokens.
 All tokens must be at the subfolder in Sketch named by color, typography, icons and utils.
 
 
-### 2. Color tokens as JSON object 
+### 2. Color tokens as JSON object
 
 To define color tokens must be inside group call colors and layer named by color/{name}. Importan also to make layer to Layer Style.
 To create a Layer Style, select a layer, and choose  `Layer › Create new Layer Style` [ Learn here ](https://www.sketch.com/docs/styling/shared-styles/)
 
 ![alt text](assets/token-color-sketch.jpg)
 
-**Sketch naming - colors/color/name**  
+**Sketch naming - colors/color/name**
 **JSON output - color/index.json**
 
 ```json
@@ -49,7 +49,7 @@ To create a Layer Style, select a layer, and choose  `Layer › Create new Text 
 
 ![alt text](assets/token-typography-sketch.jpg)
 
-**Sketch naming - typography/font/name**  
+**Sketch naming - typography/font/name**
 **JSON output - typography/index.json**
 
 ```json
@@ -81,7 +81,7 @@ To define icons tokens must be inside group call icons and layer named by icon/{
 
 ![alt text](assets/token-icons-sketch.jpg)
 
-**Sketch naming - icons/icon/name**  
+**Sketch naming - icons/icon/name**
 **JSON output - icons/index.json**
 
 ```json
@@ -102,9 +102,9 @@ Utils has multiple token types. Types are space, radius and shadow. See how to n
 
 ![alt text](assets/token-utils-sketch.jpg)
 
-**Sketch naming - utils/space/name**  
-**Sketch naming - utils/radius/name** 
-**Sketch naming - utils/shadow/name**   
+**Sketch naming - utils/space/name**
+**Sketch naming - utils/radius/name**
+**Sketch naming - utils/shadow/name**
 **JSON output - utils/index.json**
 
 ```json
@@ -156,7 +156,7 @@ Utils has multiple token types. Types are space, radius and shadow. See how to n
 }
 ```
 
-## How to install 
+## How to install
 
 - Download the [design-tokens.sketchplugin.zip](https://github.com/design-meets-development/design-tokens-plugin/releases/download/1.1.2/design-tokens.sketchplugin.zip). Extract zip and double-click the `design-tokens.sketchplugin` file
 - Download the [example-file.zip](https://github.com/design-meets-development/design-tokens-plugin/releases/download/1.1.2/example-file.zip). Extract zip and double-click the `design-tokens.sketch` file
@@ -165,10 +165,10 @@ Utils has multiple token types. Types are space, radius and shadow. See how to n
 
 - [GitHub project](https://github.com/vjandrei/design-tokens/projects/1)
 
-## Shout out ❤️ 
+## Shout out ❤️
 - Koodiklinikka #javascript channel for support to answering my stupid questions [https://koodiklinikka.fi/](https://koodiklinikka.fi/)
 - Niki Ahlskog for helping me to start the development! [GitHub](https://github.com/shnigi)
-- Family to support me to having the time to making this! 
+- Family to support me to having the time to making this!
 
 
 ## Contact/Feedback

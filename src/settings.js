@@ -6,20 +6,20 @@ export const tokensPage = "design-tokens";
 export const colorGroupName = "colors";
 export const typographyGroupName = "typography";
 // export const iconsGroupName = "icons";
-export const utilisGroupName = "utils";
+export const utilsGroupName = "utils";
 
 // Here is the naming conversion of the symbols on the sketch page
 export const colorLayerName = "color/";
 export const typographyLayerName = "font/";
 // export const iconLayerName = "icon/";
-export const utilisLayerName = "utils/";
+export const utilsLayerName = "utils/";
 
-// Utilis has many items
-export const utilisSpacer = "space";
-export const utilisRadius = "radius";
-export const utilisShadow = "shadow";
-export const utilisBorder = "border";
-export const utilisAll = [utilisSpacer, utilisRadius, utilisShadow, utilisBorder];
+// utils has many items
+export const utilsSpacer = "space";
+export const utilsRadius = "radius";
+export const utilsShadow = "shadow";
+export const utilsBorder = "border";
+export const utilsAll = [utilsSpacer, utilsRadius, utilsShadow, utilsBorder];
 
 export const exportFormats = [".json"];
 export const componentsPage = "atoms-components";
