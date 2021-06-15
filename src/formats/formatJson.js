@@ -16,7 +16,7 @@ const fromPairs = (pairs, dest = {}) => {
 
 const jsonData = {};
 
-export const color = () => {
+export const colors = () => {
   if (tokenPage) {
     const arrayToObject = array =>
       array.reduce(

@@ -1,10 +1,10 @@
-import { exportFormats } from "../settings";
+import { themes } from "../settings";
 
 export const sketchExportModal = () => {
   const exportModal = COSAlertWindow.new();
-  exportModal.setMessageText("Design systems: select exports.");
-  exportModal.setInformativeText("Each file goes to its own named folder.\r\nYou need just choose main folder where all tokens goes.");
-  exportModal.addButtonWithTitle("Ok");
+  exportModal.setMessageText("Design systems: select theme.");
+  exportModal.setInformativeText("Just select one.");
+  exportModal.addButtonWithTitle("OK");
   exportModal.addButtonWithTitle("Cancel");
   exportModal.setIcon(NSImage.alloc().initByReferencingFile(context.plugin.urlForResourceNamed("icon_128x128.png").path()));
 
@@ -16,7 +16,7 @@ export const sketchExportModal = () => {
 
   const dropdownFileFormatsTextLabel = NSTextField.alloc().initWithFrame(NSMakeRect(0, 80, viewWidth, 22));
 
-  dropdownFileFormatsTextLabel.setStringValue("Select format");
+  dropdownFileFormatsTextLabel.setStringValue("Select theme");
   dropdownFileFormatsTextLabel.editable = false;
   dropdownFileFormatsTextLabel.selectable = false;
   dropdownFileFormatsTextLabel.bezeled = false;
@@ -24,7 +24,7 @@ export const sketchExportModal = () => {
 
   const dropdownFileFormats = NSPopUpButton.alloc().initWithFrame(NSMakeRect(0, 50, viewWidth / 2, 22));
 
-  exportFormats.map(format => dropdownFileFormats.addItemWithTitle(format));
+  themes.map(theme => dropdownFileFormats.addItemWithTitle(theme));
 
   view.addSubview(dropdownFileFormatsTextLabel);
   view.addSubview(dropdownFileFormats);
@@ -32,7 +32,7 @@ export const sketchExportModal = () => {
   const resultExportModal = exportModal.runModal();
   if (resultExportModal === 1000) {
     return {
-      fileformat: exportFormats[dropdownFileFormats.indexOfSelectedItem()]
+      theme: themes[dropdownFileFormats.indexOfSelectedItem()]
     };
   }
 };

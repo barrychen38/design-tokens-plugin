@@ -26,4 +26,5 @@ export const componentsPage = "atoms-components";
 
 // Here Specifies the exported folder name
 // export const dirnames = ["color", "typography", "icons", "utils"];
-export const dirnames = ["color", "typography", "utils"];
+export const dirnames = ["colors", "typography", "utils"];
+export const themes = [ 'light', 'dark' ]

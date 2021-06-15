@@ -8,7 +8,7 @@ const designSystemExport = () => {
   const desingTokensPage = sketchDom.getSelectedDocument().pages.filter(page => page.name === "design-tokens");
   if (desingTokensPage) {
     const userExportOptions = sketchExportModal();
-    saveFileModal(userExportOptions.fileformat);
+    saveFileModal(userExportOptions.theme);
   } else {
     UI.alert("Error 🛑", 'No tokens page found!\r\nMake sure that page name is "design-tokens"!');
   }
