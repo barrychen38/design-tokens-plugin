@@ -46,7 +46,10 @@ export const typography = () => {
       array.reduce(
         (obj, item) => ({
           ...obj,
-          [item.name]: {
+          [item.name]: item.name.includes('weight') ? {
+            value: item.fontWeight,
+            type: 'font-weight',
+          } : {
             value: [ item.fontSize, item.lineHeight ],
             // "font-family": { value: item.fontFamily },
             // "font-size": { value: item.fontSize },
